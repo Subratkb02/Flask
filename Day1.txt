@@ -16,3 +16,12 @@ Environment:
 
     recommendation using virtualenv or virtualenvwrapper (pip install virtualenv)
 
+to write flask :
+    import flask class
+    flask module
+    flask constructors(__name__)
+    route() function of Flask class is a decorator which tells the application which URL should call the associated function.
+
+    app.route(rule,options)
+        -rule parameter represents URL binding with the function
+        -options is a list of parameters to be forwarded to the underlying Rule object
