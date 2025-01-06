@@ -1,0 +1,18 @@
+Web framework for python(wsgi complient web application framework)
+written in python
+often reffred as a micro framework
+flask doesn't have built in abstraction layer for datbase handling nor does it have form validation support.
+Flask supports extensiond to add such functionality to the application
+
+flask framework uses Werkzeug as one of its bases.
+easy to request and response objects
+Unicode support
+session and cookie support
+
+2nd base - web templating system Jinja2 (combines a template with a certain data source to render dynamic web pages)
+
+Environment:
+    Python 2.6 or higher
+
+    recommendation using virtualenv or virtualenvwrapper (pip install virtualenv)
+
