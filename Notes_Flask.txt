@@ -1,0 +1,52 @@
+Web framework for python(wsgi complient web application framework)
+written in python
+often reffred as a micro framework
+flask doesn't have built in abstraction layer for datbase handling nor does it have form validation support.
+Flask supports extensiond to add such functionality to the application
+
+flask framework uses Werkzeug as one of its bases.
+easy to request and response objects
+Unicode support
+session and cookie support
+
+2nd base - web templating system Jinja2 (combines a template with a certain data source to render dynamic web pages)
+
+Environment:
+    Python 2.6 or higher
+
+    recommendation using virtualenv or virtualenvwrapper (pip install virtualenv)
+
+to write flask :
+    import flask class
+    flask module
+    flask constructors(__name__)
+    route() function of Flask class is a decorator which tells the application which URL should call the associated function.
+
+    app.route(rule,options)
+        -rule parameter represents URL binding with the function
+        -options is a list of parameters to be forwarded to the underlying Rule object
+
+run() method of Flask class runs the application
+
+Routing in Flask:
+    -Modern web frameworks use routing tech to help user remembering applications URLs
+    -It is useful to access desired page directly without having to navigaet from home page
+    -route() decorator in Flask is used to bind URL to a function
+    eg: @app.route('/hello')
+        def hello_world():
+            return 'hello world' {Here Url '/hello' rule is bound to hello_world() function}
+
+Variables Rules:
+    possible to build URL dynamically by adding variable parts to rule parameter
+    This variable part is marked as <variable-name>.
+    It is passed as a keyword argument to the function with which rule is associated
+    eg: @app.route('/hello/<name>')
+        def hello_name():
+            return 'Hello %s! % name'
+
+URL building in flask
+    url_for() function is very useful for dynamically building URL for a specific function
+    the function accepts name of function as first arguments, each corresponding to variable part of URL
+    it allows you to change URLs in one go, without having to remember to change URLs all over the place
+    Url building will handle escaping of special characters and Unicode data transparently for you, so you don't have to deal with them.
+    if your application is placed outside the URL, url_for() will handle that properly for you.
