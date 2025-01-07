@@ -1,8 +1,8 @@
-Web framework for python(wsgi complient web application framework)
+Web framework for python(wsgi compliant web application framework)
 written in python
-often reffred as a micro framework
-flask doesn't have built in abstraction layer for datbase handling nor does it have form validation support.
-Flask supports extensiond to add such functionality to the application
+often referred as a micro framework
+flask doesn't have built in abstraction layer for database handling nor does it have form validation support.
+Flask supports extensions to add such functionality to the application
 
 flask framework uses Werkzeug as one of its bases.
 easy to request and response objects
@@ -44,9 +44,73 @@ Variables Rules:
         def hello_name():
             return 'Hello %s! % name'
 
-URL building in flask
+URL building in flask:
     url_for() function is very useful for dynamically building URL for a specific function
     the function accepts name of function as first arguments, each corresponding to variable part of URL
     it allows you to change URLs in one go, without having to remember to change URLs all over the place
     Url building will handle escaping of special characters and Unicode data transparently for you, so you don't have to deal with them.
     if your application is placed outside the URL, url_for() will handle that properly for you.
+
+HTTP Methods:
+    foundation of data communication
+    it is the protocol to exchange or transfer hypertext
+    defines methods to indicate the desired action to be performed on the identified resource
+    HTTP specifications defined GET,POST and HEAD methods
+    resource corresponds to a file or the output of an executable residing on the server
+    By default Flask route responds to GET requests.(However this preference can be altered by providing methods argument to route() decorator).
+
+    eg: from flask import Flask, request
+        app=Flask(__name__)
+        @app.route('/function',methods = ['Post','GET'])
+        def function():
+            if requests.method == 'Post':
+                #statement1
+                #statement2
+                #...
+            else:
+                #statement1
+                #statement2
+                #statement3.....
+
+
+Template with Flask:
+    rendering html form to the browser
+    whenever to fire a template
+    create templates folder>>hello.html>>
+    eg: form flask import Flask, render_template
+        app=flask(__name__)
+        @app.route('/')
+        def index():
+            return render_template('hello.html') //template hello.html in templates folder
+        if(__name__=='__main__':
+            app.run(debug=True)
+
+Static Files:
+    A web application often requires static files
+    JavaScript file or CSS file supporting a web page
+    Usually the web server is configured to serve them
+    During the development these files are served from static folder in your package or next to your module
+    Available at /static on the application
+    A special endpoint 'static' used to generate URL for static files
+        url_for('static',filename='style.css')
+    app.static_url_path-can be used to specify a different path for the static files on the web. Defaults to the name of teh static_folder folder
+    app.static_folder - the folder with the static files that should be served at static_url_path. Defaults to the 'static' folder in the root path of the application.
+
+Request Object in Flask:
+    Data from the client's web page is sent to server as a global request object
+    In order to process request data, it should be imported from Flask module.
+    Important attributes of request object:
+        -Form: A MultiDict with the parsed form data from POST or PUT requests
+        -args: A MultiDict with the parsed contents of the query
+        -string: The part in the URL after the question mark
+        -values: A CombinedMultiDict with the contents of both forms and args
+        -cookies: A dict with the contents of all cookies transmitted with the request.
+        -headers: The incoming request headers as a dictionary like object
+        -data: Contains the incoming request data as string in case it came with a mimetype Flask does not handle
+        -files: MultiDict with files uploaded as FileStorage object. Behaves like a standard file object you know from python
+            Also has a save() function the can store the file ont he filesystem
+        -environ: The underlying WSGI environment
+        -method: The current request method (POST,GET etc.)
+        -module: The name of the current module if the request was dispatched to a actual module
+        -routing_exception: NONE: if matching the URL failed, this is the exception that will be raised as part of the request handling. This usually a NotFound exception or something similar.
+
