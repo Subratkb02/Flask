@@ -114,3 +114,27 @@ Request Object in Flask:
         -module: The name of the current module if the request was dispatched to a actual module
         -routing_exception: NONE: if matching the URL failed, this is the exception that will be raised as part of the request handling. This usually a NotFound exception or something similar.
 
+Request.form object in Flask
+    Html form data is submitted by POST method
+    Function bound to URL receives form data in request.form dictionary object
+    This form object is forwarded to template for processing.
+    eg : <form action = 'http://localhost:5000/result' method="POST">
+
+        @app.route('/result',methods=['POST','GET'])
+        def result():
+            if request.method=='POST':
+                result=request.form
+                return render_template("table.html",result=result)
+
+    eg: from flask import Flask, render_template, request
+        app = Flask(__name__)
+        @app.route('/')
+        def student():
+            return render_template('student.html')
+        @app.route('/result',methods = ['POST','GET'])
+        def result():
+            if request.method == 'POST':
+                result = request.form
+                return render_template("result.html",result=result)
+        if __name__=='__main__':
+            app.run(debug = True)
