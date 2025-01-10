@@ -150,4 +150,19 @@ Cookies in Flask
     Use make_response() function to get response object from value of a view function.
     Use set_cookie() function of response object to store a cookie.
     get() method of request.cookies attribute is used to read a cookie.
+    eg:
+       response.set_cookie(key,value)
+
+       @app.route('/setcookie',methods=['POST','GET'])
+       def setcookie():
+
+            if request.method=='POST':
+                user=request.form['nm']
+                resp=make_response(render_template('readcookie.html'))
+                resp.set_cookie('userID',user)
+                return resp
+
+       def get cookie('/getcookie)'
+        name=request.cookies.get('UserID')
+        return '<h1>welcome'+name+</h1>
 
