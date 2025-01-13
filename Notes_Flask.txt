@@ -239,3 +239,16 @@ Message Flashing in Flask
     -flash(message, category)
     message parameter is the actual message to be flashed
     category parameter is optional. It can be either 'error', 'info' or 'warning'.
+   In order to remove message from session, template calls get_flashed_messages().
+        get_flashed_messages(wih_categories, category_filter)
+        First parameter isa a tuple if received messages are having category.
+        Second parameter is useful to display only specific messages.
+   {% with messages = get_flashed_messages() %}
+   {% if messages%}
+   {% for message in messages %}
+   {{ message }}
+   {% endfor %}
+   {% endif %}
+   {% endwith %}
+
+
