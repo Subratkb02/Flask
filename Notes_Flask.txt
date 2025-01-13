@@ -230,3 +230,12 @@ Code parameter takes one of the following values:
     -415 for Unsupported Media Type
     -429 too many requests
 
+Message Flashing in Flask
+    A good GUI based application provides feedback to user about the interaction.
+    Desktop applications use dialog or message box
+    JavaScript uses alert for similar purpose.
+    Flashing system of Flask framework makes it possible to create a message in one view and render it in a view function called next.
+    Flask.flash() method passes a message to next request which generally is a template.
+    -flash(message, category)
+    message parameter is the actual message to be flashed
+    category parameter is optional. It can be either 'error', 'info' or 'warning'.
