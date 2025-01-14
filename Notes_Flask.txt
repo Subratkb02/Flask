@@ -252,3 +252,9 @@ Message Flashing in Flask
    {% endwith %}
 
 
+ Repetitive tasks are standard in most computer applications and template rendering is no different. Creating ,
+   tables or a group of images are all repetitive tasks that can be solved using for loops.
+
+Using the same statement delimiter block as if statements {% %}, for step through a range of numbers, lists and dictionaries.
+
+
